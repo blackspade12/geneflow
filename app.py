@@ -1,5 +1,7 @@
 
 from flask import Flask, request, jsonify, send_file
+import os
+from flask_cors import CORS  # Import CORS
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -17,6 +19,7 @@ combined_data = pd.merge(genomic_data, environmental_data, on='Population_ID')
 
 # Flask App
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 # Load pre-trained models
 try:
@@ -230,4 +233,6 @@ def barplot_population_fitness():
 
 # Start the Flask server
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    # Get the port from environment variable (Render will set this)
+    port = int(os.environ.get('PORT', 5000))  # Default to 5000 if PORT is not set
+    app.run(host='0.0.0.0', port=port, debug=False)  # Bind to 0.0.0.0 for external access
