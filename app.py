@@ -7,8 +7,8 @@ import io
 import joblib
 
 # Load datasets
-genomic_data_path = 'C:/Users/divya/OneDrive/Desktop/geneflow/enhanced_aquatic_population_data.csv'
-environmental_data_path = 'C:/Users/divya/OneDrive/Desktop/geneflow/environmental_dataset.csv'
+genomic_data_path = './enhanced_aquatic_population_data.csv'
+environmental_data_path = './environmental_dataset.csv'
 
 genomic_data = pd.read_csv(genomic_data_path)
 environmental_data = pd.read_csv(environmental_data_path)
